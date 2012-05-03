@@ -12,7 +12,12 @@ Note: Vous pouvez générer facilement une version PDF ou HTML de ce guide en ut
 
 ## Sommaire
 
-* [Developpement sous Rails](#developing)
+* [Developpement sous Ruby](#developing)
     * [Ruby Guide](https://github.com/bbatsov/ruby-style-guide)
     * [Rails Guide](https://github.com/bbatsov/rails-style-guide)
+    * 
+    * 
+
+* [Developpement JS](#developing)
+    * [Google JS Guide](http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml)
 
