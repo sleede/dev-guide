@@ -12,12 +12,11 @@ Note: Vous pouvez générer facilement une version PDF ou HTML de ce guide en ut
 
 ## Sommaire
 
-* [Developpement sous Ruby](#developing)
+* [Convention & Guide](#developing)
     * [Ruby Guide](https://github.com/bbatsov/ruby-style-guide)
     * [Rails Guide](https://github.com/bbatsov/rails-style-guide)
-    * 
-    * 
+    * [JS Google Guide](http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml)
+    * [HTML/CSS Google Guide](http://google-styleguide.googlecode.com/svn/trunk/htmlcssguide.xml)
 
-* [Developpement JS](#developing)
-    * [Google JS Guide](http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml)
+    
 
