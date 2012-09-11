@@ -50,7 +50,6 @@ C'est avant tout une compilation d'outils et de pratiques que nous utilisons tou
    * Fond
    * Texte
    * Autres
-
 * Indenter les valeurs CSS3 complexes si besoin.
 * Utiliser les [raccourcis CSS](http://www.dustindiaz.com/css-shorthand/): `border, margin, padding, font, list-style, background`.
 * Commenter le code pour:
@@ -125,12 +124,10 @@ C'est avant tout une compilation d'outils et de pratiques que nous utilisons tou
 * Utiliser les micro données et les micro formats
   * [Schema.org](http://schema.org/)
   * [The Open Graph protocol](http://ogp.me/)
-
 * Réaliser des tests
   * Tester pendant le prototypage, et à la fin.
   * Réaliser un styles guide et le tester.
   * Utiliser les outils de diagnostics (Debugger, CSS Lint, Grep ...)
-
 * Utiliser des frameworks si besoin
   * [HTML5 Boilerplate](http://html5boilerplate.com/)
   * [OOCSS](https://github.com/stubbornella/oocss/wiki)
