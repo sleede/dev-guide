@@ -1,23 +1,16 @@
 # Résumé
 
-L'objectif de ce document est de présenter les outils et les bonnes pratiques de l'intégrateur web.
+Bienvenue sur le CSS Style guide de la société SLEEDE.
+L'objectif de ce document est de présenter les outils et les bonnes pratiques de l'intégrateur web au sein de l'agence.
+C'est avant tout une compilation d'outils et de pratiques que nous utilisons tous les jours. Vous pourrez facilement l'adapter à votre équipe.
+
 
 ## Sommaire
 
-* [Developing Rails Applications](#developing)
-    * [Configuration](#configuration)
+* [Les bonnes pratiques](#good_practice)
+    * [Adopter une convention d'écriture](#convention)
     * [Routing](#routing)
     * [Controllers](#controllers)
-    * [Models](#models)
-        * [ActiveRecord](#activerecord)
-    * [Migrations](#migrations)
-    * [Views](#views)
-    * [Assets](#assets)
-    * [Mailers](#mailers)
-    * [Bundler](#bundler)
-    * [Priceless Gems](#priceless)
-    * [Flawed Gems](#flawed)
-    * [Managing processes](#processes)
 * [Testing Rails Applications](#testing)
     * [Cucumber](#cucumber)
     * [RSpec](#rspec)
@@ -27,70 +20,61 @@ L'objectif de ce document est de présenter les outils et les bonnes pratiques d
         * [Mailers](#rspec_mailers)
         * [Uploaders](#rspec_uploaders)
 * [Further Reading](#reading)
-* [Contributing](#contributing)
-* [Spread the word](#spreadtheword)
 
-<a name="developing"/>
+<a name="good_pratice"/>
 # Les bonnes pratiques
 
-<a name="configuration"/>
+<a name="convention"/>
 ## Adopter une convention d'écriture
 
-* Nom de class minuscule avec tiret du 6: `name, name-header`
-* Alignement adapté en fonction des cas:
+* Nom de classe en minuscule avec tiret: `name, name-header`.
+* Choisir des noms de classe explicite.
+* Indenter le code avec 2 espaces.
+* Identer et espacer correctement le code:
 
-        ```css
-         .element-simple { margin: 0; }
-      
-      	.element-alpha,
-      	.element-simple { margin: 0; }
-      
-      	.element {
-      		top 0; right: 0; bottom: 0; left: 0;
-      		margin: 1em;
-      	}
-        ```
+   ```css
+   .element-simple { margin: 0; }
+   
+   .element-alpha,
+   .element-simple { margin: 0; }
+   
+   .element {
+   	top 0; right: 0; bottom: 0; left: 0;
+   	margin: 1em;
+   }
+   ```  
+* Indenter les relations entre les sélecteurs (parent > enfant).
+* Classer les propriétés par type.
+   * Boîte
+   * Bordure
+   * Fond
+   * Texte
+   * Autres
 
-* While not strictly related to style, in order to use
-[carrierwave](https://github.com/jnicklas/carrierwave) for the files
-upload and [fog](https://github.com/fog/fog) for file storage, some
-configuration needs to be applied in the
-`config/initializers/carrierwave.rb` file:
+* Indenter les valeurs CSS3 complexes si besoin.
+* Utiliser les [raccourcis CSS](http://www.dustindiaz.com/css-shorthand/): `border, margin, padding, font, list-style, background`.
+* Commenter le code pour:
+   * Détailler un usage particulier
+   * Expliquer les bogues corrigés
+   * Signaler une modification
 
-    ```Ruby
-    # config/initializers/carrierwave.rb
-
-    # Store the files locally for test environment
-    if Rails.env.test?
-      CarrierWave.configure do |config|
-        config.storage = :file
-        config.enable_processing = false
-      end
-    end
-
-    # Using Amazon S3 for Development and Production
-    if Rails.env.development? || Rails.env.production?
-      CarrierWave.configure do |config|
-        config.root = Rails.root.join('tmp')
-        config.cache_dir = 'uploads'
-
-        config.storage = :fog
-        config.fog_credentials = {
-            provider: 'AWS',
-            aws_access_key_id: 'your_access_key_id',
-            aws_secret_access_key: 'your_secret_access_key',
-        }
-        config.fog_directory = 'your_bucket'
-      end
-    end
-   ```
-
-  * Do not use `fog` for the test environment, use `file` storage instead.
-  * Use `fog` for the development environment. This will prevent
-    unexpected problems on production.
 
 <a name="routing"/>
-## Routing
+## Adopter les bonnes stratégies et outils de développement
+
+* Ajouter un Doctype HTML5 `<!DOCTYPE html>`.
+* Utiliser l'élément HTML pour cibler IE:
+
+    ```html
+    <!--[if lt IE 7]>      <html class="ie6"> <![endif]-->
+    <!--[if IE 7]>         <html class="ie7"> <![endif]-->
+    <!--[if IE 8]>         <html class="ie8"> <![endif]-->
+    <!--[if IE 9]>         <html class="ie9"> <![endif]-->
+    <!--[if gt IE 9]><!--> <html>    <!--<![endif]-->
+    ```
+
+
+* Share no more than two instance variables between a controller and a view.
 
 * When you need to add more actions to a RESTful resource (do you
   really need them at all?) use `member` and `collection` routes.
