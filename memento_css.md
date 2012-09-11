@@ -300,28 +300,27 @@ L'apparence est décrit par la classe et non par le tag.
   a { color: $links }
   ```
 * Les mixins
-  * Définir et appeler un mixin
-    ```scss
-    @mixin mon-mixin {
-      color: red;
-    }
-    .ma-regle {
-      @include mon-mixin;
-    }
-    ```
-  * Mixin avec arguments
-    ```scss
-    @mixin box-shadow($arguments: none) {
-      -moz-box-shadow: $arguments; // Firefox
-      -webkit-box-shadow: $arguments; // WebKit
-      box-shadow: $arguments; // Standard
-    }
-    .button {
-      @include box-shadow(1px 1px 3px red);
-    }
-    ```
+   ```scss
+   @mixin mon-mixin {
+    color: red;
+   }
+   .ma-regle {
+    @include mon-mixin;
+   }
+   ```
+* Les Mixin avec arguments
+   ```scss
+   @mixin box-shadow($arguments: none) {
+   -moz-box-shadow: $arguments; // Firefox
+   -webkit-box-shadow: $arguments; // WebKit
+   box-shadow: $arguments; // Standard
+   }
+   .button {
+   @include box-shadow(1px 1px 3px red);
+   }
+   ```
   * Attention aux volumes de code css générés!
-* Etendre une class: @extend
+* Etendre une class: `@extend`
   ```scss
   .rounded {
     -webkit-border-radius: 5px;
@@ -375,7 +374,7 @@ Les avantages à utiliser compass:
 ## Travailler en équipe
 
 * Communiquer avec:
-  * Le graphiste (typo, css3, design mobile (hover, js, bande passante))
+  * Le graphiste (typo, css3, design mobile, hover, js, bande passante)
     * Ajuster la maquette graphique en amont afin de détecter:
       - Les images trop lourdes
       - Un comportement non natif (ex formulaire)
