@@ -12,7 +12,7 @@ C'est avant tout une compilation d'outils et de pratiques que nous utilisons tou
     * [Un `<head> à toute épreuve](#head)
     * [Stratégies de développement](#strategies)
     * [Les frameworks CSS](#frameworks)
-      * [OOCSS](#oocss)
+      * [En particulier: OOCSS](#oocss)
     * [Allégement de bonnes pratiques](#limits)
 * [Sass et Compass](#sass_compass)
     * [Sass](#sass)
@@ -65,6 +65,7 @@ C'est avant tout une compilation d'outils et de pratiques que nous utilisons tou
    * Expliquer les bogues corrigés
    * Signaler une modification
 * Utiliser majoritairement les class pour le CSS, et les ID pour le JS.
+* Garder une spécificité basse dans votre code: éviter par exemple `#id .class #id2`
 * Utiliser les micro données et les micro formats
   * [Schema.org](http://schema.org/)
   * [The Open Graph protocol](http://ogp.me/)
@@ -166,7 +167,7 @@ C'est avant tout une compilation d'outils et de pratiques que nous utilisons tou
   * Utiliser des machines virtuelles ou des outils de tests (type Litmus).
 
 <a name="frameworks"/>
-## les frameworks CSS
+## Les frameworks CSS
 
 * Utiliser des frameworks si besoin
   * [HTML5 Boilerplate](http://html5boilerplate.com/)
@@ -175,17 +176,103 @@ C'est avant tout une compilation d'outils et de pratiques que nous utilisons tou
   * [Bootstrap Twitter](http://twitter.github.com/bootstrap/) 
 
 <a name="oocss"/>
-### OOCSS
+### En particulier: OOCSS
 
 OOCSS permet de séparer la structure (dimensions, marges, position) de l'apparence (bordures, couleurs, images). 
-L'apparence est décris par la classe et non par le tag.
-p113
+L'apparence est décrit par la classe et non par le tag.
+
+* Voici un exemple de boutons sans OOCSS
+  ```html
+  <a class="primary-action">Envoyer le message</a>
+  <a class="secondary-action">Annuler</a>
+  ```
+
+  ```css
+  .primary-action {
+    padding: .5em 1em;
+    display: inline-block;
+    line-height: 1.5em;
+    height: 1.5em;
+    border-radius: 10px;
+    margin: 0 5px 0 0;
+    background: black;
+    color: #fff;
+    font-weight: bold;
+    box-shadow: #000 0 0 5px;
+  }
+
+  .secondary-action {
+    padding: .5em 1em;
+    display: inline-block;
+    line-height: 1.5em;
+    height: 1.5em;
+    border-radius: 10px;
+    margin: 0 5px 0 0;
+    background: #eee;
+    border: 1px solid #ddd
+    color: #555;
+    padding: 0.25em 1em;
+    text-shadow: #fff 0 1px 0;
+  }
+  ```
+
+* Avec OOCSS
+  ```html
+  <a class="button primary-action">Envoyer le message</a>
+  <a class="button secondary-action">Annuler</a>
+  ```
+
+  ```css
+  /* Structure */
+  .button {
+    padding: .5em 1em;
+    display: inline-block;
+    line-height: 1.5em;
+    height: 1.5em;
+    border-radius: 10px;
+    margin: 0 5px 0 0;
+  }
+
+  /* habillage */
+  .primary-action {
+    background: black;
+    color: #fff;
+    font-weight: bold;
+    box-shadow: #000 0 0 5px;
+  }
+
+  .secondary-action {
+    background: #eee;
+    border: 1px solid #ddd
+    color: #555;
+    padding: 0.25em 1em;
+    text-shadow: #fff 0 1px 0;
+  }
+  ```
+
+* Exemple de code à éviter:
+  ```css
+  #sidebar h2 { 
+    ...
+  }
+  ```
+
+  Les styles relatifs à #sidebar h2 ne seront pas réutilisable et h2 ne pourra être déplacé ou devenir un h1.
+  Préférez: 
+  ```css
+  .en-tete { 
+    ...
+  }
+  ```
+
+* OOCSS prend toute sa mesure sur des projets plus important avec de nombreux gabarits.
+  Plus d'informations: [Documentation OOCSS](https://github.com/stubbornella/oocss/wiki)
 
 <a name="limits"/>
 ## Allégement de bonnes pratiques
 
 * Utiliser de manière simplifié une checklist (type OpQuast)
-  * Voir SLEEDE - Checklists (google docs)
+  * [Voir SLEEDE - Checklists](https://docs.google.com/spreadsheet/pub?key=0AtLuTKz2ikTydFktNkhHdDNSdHZRdU85Rm9qWUdrRUE&output=html)
 * Ne pas rechercher la perfection sémantique (dans le doute, on utilise `div`).
 * Accepter (et faire accepter) un rendu différent sur certains navigateurs tout en
   assurant un contenu toujours accessible. 
@@ -337,4 +424,8 @@ Mise en place:
 * [Litmus: tester vos pages et vos e-mails](http://litmus.com/)
 * [HTML5 Boilerplate: boîte à outils de l'intégrateur](http://html5boilerplate.com/)
 * [styleneat: ordonner les propriétés CSS](http://styleneat.com)
+* [Least: imbriquer vos sélecteurs automatiquement](http://toki-woki.net/p/least/)
+* [W3C Checklink: validateur de liens](http://validator.w3.org/checklink/)
+* [Colour Contrast Check: analyseur de contrastes](http://snook.ca/technical/colour_contrast/colour.html)
+* [GTmetric: analyse des performances](http://gtmetrix.com/)
 
