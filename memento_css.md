@@ -38,7 +38,7 @@ C'est avant tout une compilation d'outils et de pratiques que nous utilisons tou
    .element-alpha,
    .element-simple { margin: 0; }
    
-   .element {
+   #header .element {
    	top 0; right: 0; bottom: 0; left: 0;
    	margin: 1em;
    }
@@ -74,7 +74,77 @@ C'est avant tout une compilation d'outils et de pratiques que nous utilisons tou
     ```
 
 
-* Share no more than two instance variables between a controller and a view.
+* Utiliser le script Modernizr.js pour détecter les capacités du navigateur.
+    ```html
+    <html lang="fr" class="js no-touch postmessage history multiplebgs no-boxshadow
+    opacity cssanimations csscolumns cssgradients csstransforms csstransitions
+    fontface localstorage sessionsstorage svg inlinesvg blobbuilder bloburls download
+    formdata">
+    ```
+
+    ```css
+    .box { box-shadow: #999 0 0 5px; }
+    .no-boxshadow .box { border: 1px solid #ddd; }
+    ```
+
+* Adopter et combiner si nécessaire certaines stratégies:
+  * L'amélioration progressive
+    ```css
+    /* Par défaut, on affiche le contenu de l'accordéon */
+    .accordeon-contenu { display: block; }
+
+    /* Si JavaScript est activé, on masque le contenu de l'accordéon */
+    .js .accordeon-contenu { display: none; }
+    ```
+
+  * La dégradation gracieuse (ou tolérance à l'erreur)
+    ```css
+    /* Par défaut, on masque le contenu de l'accordéon */
+    .accordeon-contenu { display: none; }
+
+    /* Si JavaScript n'est pas activé, on affiche le contenu de l'accordéon */
+    .no-js .accordeon-contenu { display: block; }
+    ```
+
+* Déclencher le mode compatibilité le plus élevé d'Internet Explorer
+  ```html
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  ```
+* Utiliser l'encodage Unicode
+  ```html
+  <meta charset="utf-8" />
+  ```
+* Utiliser un reset CSS sélectif
+  * [Normalize CSS de Nicolas Gallagher](http://necolas.github.com/normalize.css/)
+  * [Reset CSS d'Eric Meyer](http://meyerweb.com/eric/tools/css/reset/)
+  * [Liste des resets CSS existant](http://www.cssreset.com/)
+* Bien ranger ses fichiers et fragmenter le code > 500 lignes 
+(reset, typo, form, grid, layout, global, application, pages, print, ie...)
+* Ajouter une css pour le média Print.
+* Utiliser majoritairement les class pour le CSS, et les ID pour le JS.
+* Utiliser les micro données et les micro formats
+  * [Schema.org](http://schema.org/)
+  * [The Open Graph protocol](http://ogp.me/)
+
+* Réaliser des tests
+  * Tester pendant le prototypage, et à la fin.
+  * Réaliser un styles guide et le tester.
+  * Utiliser les outils de diagnostics (Debugger, CSS Lint, Grep ...)
+
+* Utiliser des frameworks si besoin
+  * [HTML5 Boilerplate](http://html5boilerplate.com/)
+  * [OOCSS](https://github.com/stubbornella/oocss/wiki)
+  * [Zurb Foundation](http://foundation.zurb.com/)
+  * [Bootstrap Twitter](http://twitter.github.com/bootstrap/) 
+
+<a name="activerecord"/>
+### OOCSS
+
+* OOCSS permet de séparer la structure (dimensions, marges, position) de 
+l'apparence (bordures, couleurs, images). 
+L'apparence est décris par la classe et non par le tag.
+
+
 
 * When you need to add more actions to a RESTful resource (do you
   really need them at all?) use `member` and `collection` routes.
@@ -89,7 +159,7 @@ C'est avant tout une compilation d'outils et de pratiques que nous utilisons tou
       get 'unsubscribe', :on => :member
     end
 
-    # bad
+    # badcssres
     get 'photos/search'
     resources :photos
 
