@@ -9,9 +9,11 @@ C'est avant tout une compilation d'outils et de pratiques que nous utilisons tou
 
 * [Bonnes pratiques: un code lisible et maintenable](#good_practice)
     * [Adopter une convention d'écriture](#convention)
-    * [Un <head> à toute épreuve](#head)
+    * [Un `<head> à toute épreuve](#head)
     * [Stratégies de développement](#strategies)
     * [Les frameworks CSS](#frameworks)
+      * [OOCSS](#oocss)
+    * [Allégement de bonnes pratiques](#limits)
 * [Sass et Compass](#sass_compass)
     * [Sass](#sass)
     * [Compass](#compass)
@@ -21,7 +23,11 @@ C'est avant tout une compilation d'outils et de pratiques que nous utilisons tou
     * [Les erreurs de conception](#errors)
     * [Bien débuter un projet](#new_project)
     * [Résoudre un problème](#resolve)
-* [Outils et veille technologiques](#tools)
+* [Outils et veille technologiques](#tools_learn)
+    * [Veille technologique](#learn)
+    * [Références & docs](#docs)
+    * [Outils](#tools)
+
 
 <a name="good_pratice"/>
 # Bonnes pratiques: un code lisible et maintenable
@@ -63,9 +69,8 @@ C'est avant tout une compilation d'outils et de pratiques que nous utilisons tou
   * [Schema.org](http://schema.org/)
   * [The Open Graph protocol](http://ogp.me/)
 
-
 <a name="head"/>
-## Un <head> à toute épreuve
+## Un `<head> à toute épreuve
 
 * Ajouter un Doctype HTML5 `<!DOCTYPE html>`.
 * Utiliser l'élément HTML pour cibler IE:
@@ -152,11 +157,16 @@ C'est avant tout une compilation d'outils et de pratiques que nous utilisons tou
   .no-js .accordeon-contenu { display: block; }
   ```
 
-* Réaliser des tests
+* Tester encore et encore
   * Tester pendant le prototypage, et à la fin.
-  * Réaliser un styles guide et le tester.
+  * Réaliser un styles guide (gros projet) et le tester.
+    * [Les patterns portfolio](http://24ways.org/2011/front-end-style-guides)
+    * [Générer un style guide avec KSS](https://github.com/kneath/kss)
   * Utiliser les outils de diagnostics (Debugger, CSS Lint, Grep ...)
+  * Utiliser des machines virtuelles ou des outils de tests (type Litmus).
 
+<a name="frameworks"/>
+## les frameworks CSS
 
 * Utiliser des frameworks si besoin
   * [HTML5 Boilerplate](http://html5boilerplate.com/)
@@ -164,81 +174,167 @@ C'est avant tout une compilation d'outils et de pratiques que nous utilisons tou
   * [Zurb Foundation](http://foundation.zurb.com/)
   * [Bootstrap Twitter](http://twitter.github.com/bootstrap/) 
 
-<a name="activerecord"/>
+<a name="oocss"/>
 ### OOCSS
 
-* OOCSS permet de séparer la structure (dimensions, marges, position) de 
-l'apparence (bordures, couleurs, images). 
+OOCSS permet de séparer la structure (dimensions, marges, position) de l'apparence (bordures, couleurs, images). 
 L'apparence est décris par la classe et non par le tag.
+p113
+
+<a name="limits"/>
+## Allégement de bonnes pratiques
+
+* Utiliser de manière simplifié une checklist (type OpQuast)
+  * Voir SLEEDE - Checklists (google docs)
+* Ne pas rechercher la perfection sémantique (dans le doute, on utilise `div`).
+* Accepter (et faire accepter) un rendu différent sur certains navigateurs tout en
+  assurant un contenu toujours accessible. 
+* Utiliser l'unité em dans des contextes relatifs mais pas à outrance.
 
 
 
-<a name="flawed"/>
-## Flawed Gems
+<a name="sass_compass"/>
+# Sass et Compass
 
-This is a list of gems that are either problematic or superseded by
-other gems. You should avoid using them in your projects.
+<a name="sass"/>
+## Sass
 
-* [rmagick](http://rmagick.rubyforge.org/) - this gem is notorious for its memory consumption. Use
-[minimagick](https://github.com/probablycorey/mini_magick) instead.
-* [autotest](http://www.zenspider.com/ZSS/Products/ZenTest/) - old solution for running tests automatically. Far
-inferior to guard and [watchr](https://github.com/mynyml/watchr).
-* [rcov](https://github.com/relevance/rcov) - code coverage tool, not
-  compatible with Ruby 1.9. Use SimpleCov instead.
-* [therubyracer](https://github.com/cowboyd/therubyracer) - the use of
-  this gem in production is strongly discouraged as it uses a very large amount of
-  memory.
++ Règles imbriqués: attention à ne pas en abuser, spécialisation importante des sélecteurs
+  - règle de l'inception: 4 niveaux max
++ Référencer le sélecteur courant ou parent avec &
++ commentaires apparent ou non (//)
++ Variables ($test)
++ Mixins (p164) et arguments (attention aux surpoids du code css généré)
++ Etendre une class: @extend (préférer une combinaison mixin/extend)
++ Import de partial (_partial)
++ Utilisation des modules (ex: couleur)
 
-This list is also a work in progress. Please, let me know if you know
-other popular, but flawed gems.
++ [Documentation SASS](http://www.kaelig.fr/bettersassdocs/)
 
-<a name="processes"/>
-## Managing processes
+<a name="compass"/>
+## Compass
 
-* If your projects depends on various external processes use
-  [foreman](https://github.com/ddollar/foreman) to manage them.
++ reset
++ Helper images, urls ...
++ CSS3 sans préfixes
++ Data URI
++ Dimensions images
++ Sprites
++ effets CSS3
 
-<a name="testing"/>
-# Testing Rails applications
+<a name="optimisation"/>
+## Optimisation du SCSS
 
-The best approach to implementing new features is probably the BDD
-approach. You start out by writing some high level feature tests
-(generally written using Cucumber), then you use these tests to drive
-out the implementation of the feature. First you write view specs for
-the feature and use those specs to create the relevant
-views. Afterwards you create the specs for the controller(s) that will
-be feeding data to the views and use those specs to implement the
-controller. Finally you implement the models specs and the models
-themselves.
++ Utiliser des variables
++ Définir des jeux de polices (stack-fonts)
++ Créer des mixins
++ Etendre des classes (@extend)
++ Mieux, une combinaison de mixin avec @extend
++ Gestion des navigateurs particuliers (ie p242)
++ Compresser le css (Least)
 
 
-<a name="reading"/>
-# Further Reading
+<a name="methods"/>
+# Les méthodes de travail
 
-There are a few excellent resources on Rails style, that you should
-consider if you have time to spare:
+<a name="team"/>
+## Travailler en équipe
 
-* [The Rails 3 Way](http://tr3w.com/)
-* [Ruby on Rails Guides](http://guides.rubyonrails.org/)
-* [The RSpec Book](http://pragprog.com/book/achbd/the-rspec-book)
+* Communiquer avec:
+  * Le graphiste (typo, css3, design mobile (hover, js, bande passante))
+    * Ajuster la maquette graphique en amont afin de détecter:
+      - Les images trop lourdes
+      - Un comportement non natif (ex formulaire)
+      - Une Structure incompatible avec le SEO
+      - Trop de teintes ou de typographies différentes.
+  * Le dev (qu'est ce que je peux modifier sans risques ?)
 
-<a name="contributing"/>
-# Contributing
+* Code documenté (commentaire, style guide ...)
+* Commit intelligible (Git)
+* Code inspiré de bonnes pratiques (pattern)
+* Créer des objets simple, facile à combiner / comprendre.
+* Favoriser le code simple et compréhensible
 
-Nothing written in this guide is set in stone. It's my desire to work
-together with everyone interested in Rails coding style, so that we could
-ultimately create a resource that will be beneficial to the entire Ruby
-community.
+<a name="errors"/>
+## Les erreurs de conception
 
-Feel free to open tickets or send pull requests with improvements. Thanks in
-advance for your help!
+* Ne pas documenter
+* Réinventer la roue
+* Factoriser trop tôt le code
+* Ne pas tester
+* Utiliser des techniques derniers cris
+* Varier les conventions
+* Ne pas communiquer au sein de l'équipe
+* Ne pas versionner son code
+* Ne pas faire de veille.
+* Rechercher la perfection
++ Repousser le nettoyage de son code
++ Utiliser des styles inline et des !important
++ Sur spécifier les propriétés
++ Multiplier les propriétés (couleurs, tailles, margin 0, padding 0)
 
-<a name="spreadtheword"/>
-# Spread the Word
+<a name="new_project"/>
+## Bien débuter un projet
 
-A community-driven style guide is of little use to a community that
-doesn't know about its existence. Tweet about the guide, share it with
-your friends and colleagues. Every comment, suggestion or opinion we
-get makes the guide just a little bit better. And we want to have the
-best possible guide, don't we?
++ Etudier le design (cahier des charges, maquettes ...)
++ Déduire des motifs récurrents (boîtes, menus, éléments dynamiques, boutons ...)
++ Définir une base typographique (p215)
++ Coder la structure générale (Header, menu, colonnage, footer)
++ Coder les modules (p219)
++ Coder les exceptions (par pages): ex 1 page = 1 class (utilisation du body)
+
+<a name="resolve"/>
+## Résoudre un problème
+
++ Valider le code
++ Rechercher une solution dans les moteurs
++ Isoler le problème dans un environnement contrôlé (reduced test)
++ Demander de l'aide (JS Fiddle, forum Alsacréation, Stack overflow, doctype, dabblet ...)
++ Communiquer la résolution du problème (blog, twitter)
+
+
+<a name="tools_learn"/>
+# Outils et veille technologique
+
+<a name="learn"/>
+## Veille technologique
+
+Il ne s'agit pas d'une activité pour se tenir au courant, mais d'une activité intrinsèque à notre métier, inscrite dans nos missions.
+
+Cela comporte de nombreux avantanges:
+
+* Anticiper les avancées technologiques
+* Améliorer la qualité et la productivité
+* Créer d'avantages
+* Ne pas réinventer la roue
+* Augmenter ses compétences
+* Diffuser l'information à l'équipe
+
+Mise en place:
++ [Organiser sa veille](http://fr.slideshare.net/mcfaure/veille-technologique-mcf)
+
+<a name="docs"/>
+## Références & docs
+
+* [Google best practices & tools](https://developers.google.com/speed/docs/best-practices/rendering?hl=fr-FR)
+* [Documentation SASS](http://www.kaelig.fr/bettersassdocs/)
+* Simple as Milk
+* Clearleft.com
++ Smashing magazine
++ A list apart
++ Alsacréation
++ Pompage.net
++ Openweb
++ wdfriday.com
++ 24ways
++ Css4design
++ Blogs & twitters
+
+<a name="tools"/>
+## Outils
+
+* [CSS Lint: diagnostic en ligne](http://csslint.net/)
+* [Litmus: tester vos pages et vos e-mails](http://litmus.com/)
+* [HTML5 Boilerplate: boîte à outils de l'intégrateur](http://html5boilerplate.com/)
+* [styleneat: ordonner les propriétés CSS](http://styleneat.com)
 
