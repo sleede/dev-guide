@@ -38,15 +38,15 @@ C'est avant tout une compilation d'outils et de pratiques que nous utilisons tou
 * Indenter et espacer correctement le code:
    ```css
    .element-simple { margin: 0; }
-   
+
    .element-alpha,
    .element-simple { margin: 0; }
-   
+
    #header .element {
-   	top 0; right: 0; bottom: 0; left: 0;
-   	margin: 1em;
+     top 0; right: 0; bottom: 0; left: 0;
+     margin: 1em;
    }
-   ```  
+   ```
 * Indenter les relations entre les sélecteurs (parent > enfant).
 * Classer les propriétés par type.
    * Boîte
@@ -101,7 +101,7 @@ C'est avant tout une compilation d'outils et de pratiques que nous utilisons tou
   * [Normalize CSS de Nicolas Gallagher](http://necolas.github.com/normalize.css/)
   * [Reset CSS d'Eric Meyer](http://meyerweb.com/eric/tools/css/reset/)
   * [Liste des resets CSS existant](http://www.cssreset.com/)
-* Bien ranger ses fichiers et fragmenter le code > 500 lignes 
+* Bien ranger ses fichiers et fragmenter le code > 500 lignes
 (reset, typo, form, grid, layout, global, application, pages, print, ie...)
 * Ajouter une css pour le média Print.
 * Récapitulatif de l'entête d'une page html
@@ -159,12 +159,12 @@ C'est avant tout une compilation d'outils et de pratiques que nous utilisons tou
   * [HTML5 Boilerplate](http://html5boilerplate.com/)
   * [OOCSS](https://github.com/stubbornella/oocss/wiki)
   * [Zurb Foundation](http://foundation.zurb.com/)
-  * [Bootstrap Twitter](http://twitter.github.com/bootstrap/) 
+  * [Bootstrap Twitter](http://twitter.github.com/bootstrap/)
 
 <a name="oocss"/>
 ### En particulier: OOCSS
 
-OOCSS permet de séparer la structure (dimensions, marges, position) de l'apparence (bordures, couleurs, images). 
+OOCSS permet de séparer la structure (dimensions, marges, position) de l'apparence (bordures, couleurs, images).
 L'apparence est décrit par la classe et non par le tag.
 
 * Voici un exemple de boutons sans OOCSS
@@ -234,14 +234,14 @@ L'apparence est décrit par la classe et non par le tag.
   ```
 * Exemple de code à éviter:
   ```css
-  #sidebar h2 { 
+  #sidebar h2 {
     ...
   }
   ```
   Les styles relatifs à #sidebar h2 ne seront pas réutilisable et h2 ne pourra être déplacé ou devenir un h1.
-  Préférez: 
+  Préférez:
   ```css
-  .en-tete { 
+  .en-tete {
     ...
   }
   ```
@@ -255,7 +255,7 @@ L'apparence est décrit par la classe et non par le tag.
   * [Voir SLEEDE - Checklists](https://docs.google.com/spreadsheet/pub?key=0AtLuTKz2ikTydFktNkhHdDNSdHZRdU85Rm9qWUdrRUE&output=html)
 * Ne pas rechercher la perfection sémantique (dans le doute, on utilise `div`).
 * Accepter (et faire accepter) un rendu différent sur certains navigateurs tout en
-  assurant un contenu toujours accessible. 
+  assurant un contenu toujours accessible.
 * Utiliser l'unité `em dans des contextes relatifs mais pas à outrance.
 
 
@@ -292,7 +292,7 @@ L'apparence est décrit par la classe et non par le tag.
 * Les commentaires
   ```scss
   /* Commentaire apparent dans la source après compilation */
-  // Commentaire Sass, ne sera pas compilé 
+  // Commentaire Sass, ne sera pas compilé
   ```
 * Les variables
   ```scss
