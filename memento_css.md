@@ -10,7 +10,7 @@ C'est avant tout une compilation d'outils et de pratiques que nous utilisons tou
     * [Un head à toute épreuve](#head)
     * [Stratégies de développement](#strategies)
     * [Les frameworks CSS](#frameworks)
-      * [En particulier: OOCSS](#oocss)
+      - [En particulier: OOCSS](#oocss)
     * [Allégement de bonnes pratiques](#limits)
 * [Sass et Compass](#sass_compass)
     * [Sass](#sass)
