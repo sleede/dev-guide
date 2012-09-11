@@ -83,7 +83,6 @@ C'est avant tout une compilation d'outils et de pratiques que nous utilisons tou
   opacity cssanimations csscolumns cssgradients csstransforms csstransitions
   fontface localstorage sessionsstorage svg inlinesvg blobbuilder bloburls download
   formdata">
-  ```
   ```css
   .box { box-shadow: #999 0 0 5px; }
   .no-boxshadow .box { border: 1px solid #ddd; }
