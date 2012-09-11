@@ -4,9 +4,7 @@ Bienvenue sur le CSS Style guide de la société SLEEDE.
 L'objectif de ce document est de présenter les outils et les bonnes pratiques de l'intégrateur web au sein de l'agence.
 C'est avant tout une compilation d'outils et de pratiques que nous utilisons tous les jours. Vous pourrez facilement l'adapter à votre équipe!
 
-
 ## Sommaire
-
 * [Bonnes pratiques: un code lisible et maintenable](#good_practice)
     * [Adopter une convention d'écriture](#convention)
     * [Un `<head> à toute épreuve](#head)
@@ -28,7 +26,6 @@ C'est avant tout une compilation d'outils et de pratiques que nous utilisons tou
     * [Références & docs](#docs)
     * [Outils](#tools)
 
-
 <a name="good_pratice"/>
 # Bonnes pratiques: un code lisible et maintenable
 
@@ -39,7 +36,6 @@ C'est avant tout une compilation d'outils et de pratiques que nous utilisons tou
 * Choisir des noms de classe explicite.
 * Indenter le code avec 2 espaces.
 * Indenter et espacer correctement le code:
-
    ```css
    .element-simple { margin: 0; }
    
@@ -72,10 +68,8 @@ C'est avant tout une compilation d'outils et de pratiques que nous utilisons tou
 
 <a name="head"/>
 ## Un `<head> à toute épreuve
-
 * Ajouter un Doctype HTML5 `<!DOCTYPE html>`.
 * Utiliser l'élément HTML pour cibler IE:
-
     ```html
     <!--[if lt IE 7]>      <html class="ie6"> <![endif]-->
     <!--[if IE 7]>         <html class="ie7"> <![endif]-->
@@ -83,8 +77,6 @@ C'est avant tout une compilation d'outils et de pratiques que nous utilisons tou
     <!--[if IE 9]>         <html class="ie9"> <![endif]-->
     <!--[if gt IE 9]><!--> <html>         <!--<![endif]-->
     ```
-
-
 * Utiliser le script Modernizr.js pour détecter les capacités du navigateur.
     ```html
     <html lang="fr" class="js no-touch postmessage history multiplebgs no-boxshadow
@@ -92,12 +84,10 @@ C'est avant tout une compilation d'outils et de pratiques que nous utilisons tou
     fontface localstorage sessionsstorage svg inlinesvg blobbuilder bloburls download
     formdata">
     ```
-
     ```css
     .box { box-shadow: #999 0 0 5px; }
     .no-boxshadow .box { border: 1px solid #ddd; }
     ```
-
 * Déclencher le mode compatibilité le plus élevé d'Internet Explorer
   ```html
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -113,7 +103,6 @@ C'est avant tout une compilation d'outils et de pratiques que nous utilisons tou
 * Bien ranger ses fichiers et fragmenter le code > 500 lignes 
 (reset, typo, form, grid, layout, global, application, pages, print, ie...)
 * Ajouter une css pour le média Print.
-
 * Récapitulatif de l'entête d'une page html
   ```html
   <!DOCTYPE html>
@@ -148,7 +137,6 @@ C'est avant tout une compilation d'outils et de pratiques que nous utilisons tou
   /* Si JavaScript est activé, on masque le contenu de l'accordéon */
   .js .accordeon-contenu { display: none; }
   ```
-
 * La dégradation gracieuse (ou tolérance à l'erreur)
   ```css
   /* Par défaut, on masque le contenu de l'accordéon */
@@ -157,7 +145,6 @@ C'est avant tout une compilation d'outils et de pratiques que nous utilisons tou
   /* Si JavaScript n'est pas activé, on affiche le contenu de l'accordéon */
   .no-js .accordeon-contenu { display: block; }
   ```
-
 * Tester encore et encore
   * Tester pendant le prototypage, et à la fin.
   * Réaliser un styles guide (gros projet) et le tester.
@@ -186,7 +173,6 @@ L'apparence est décrit par la classe et non par le tag.
   <a class="primary-action">Envoyer le message</a>
   <a class="secondary-action">Annuler</a>
   ```
-
   ```css
   .primary-action {
     padding: .5em 1em;
@@ -215,13 +201,11 @@ L'apparence est décrit par la classe et non par le tag.
     text-shadow: #fff 0 1px 0;
   }
   ```
-
 * Avec OOCSS
   ```html
   <a class="button primary-action">Envoyer le message</a>
   <a class="button secondary-action">Annuler</a>
   ```
-
   ```css
   /* Structure */
   .button {
@@ -249,14 +233,12 @@ L'apparence est décrit par la classe et non par le tag.
     text-shadow: #fff 0 1px 0;
   }
   ```
-
 * Exemple de code à éviter:
   ```css
   #sidebar h2 { 
     ...
   }
   ```
-
   Les styles relatifs à #sidebar h2 ne seront pas réutilisable et h2 ne pourra être déplacé ou devenir un h1.
   Préférez: 
   ```css
@@ -264,7 +246,6 @@ L'apparence est décrit par la classe et non par le tag.
     ...
   }
   ```
-
 * OOCSS prend toute sa mesure sur des projets plus important avec de nombreux gabarits.
   Plus d'informations: [Documentation OOCSS](https://github.com/stubbornella/oocss/wiki)
 
@@ -276,8 +257,7 @@ L'apparence est décrit par la classe et non par le tag.
 * Ne pas rechercher la perfection sémantique (dans le doute, on utilise `div`).
 * Accepter (et faire accepter) un rendu différent sur certains navigateurs tout en
   assurant un contenu toujours accessible. 
-* Utiliser l'unité em dans des contextes relatifs mais pas à outrance.
-
+* Utiliser l'unité `em dans des contextes relatifs mais pas à outrance.
 
 
 <a name="sass_compass"/>
@@ -286,39 +266,107 @@ L'apparence est décrit par la classe et non par le tag.
 <a name="sass"/>
 ## Sass
 
-+ Règles imbriqués: attention à ne pas en abuser, spécialisation importante des sélecteurs
-  - règle de l'inception: 4 niveaux max
-+ Référencer le sélecteur courant ou parent avec &
-+ commentaires apparent ou non (//)
-+ Variables ($test)
-+ Mixins (p164) et arguments (attention aux surpoids du code css généré)
-+ Etendre une class: @extend (préférer une combinaison mixin/extend)
-+ Import de partial (_partial)
-+ Utilisation des modules (ex: couleur)
+* Règles imbriqués: attention à ne pas en abuser, spécialisation importante des sélecteurs
+  * Exemple de code mauvais généré: `body#homepage #navigation #home-link { ... }`
+  * Règle de l'inception: 4 niveaux max d'imbrication.
+* Référencer le sélecteur courant ou parent avec &
+  ```css
+  /* Référencer le sélecteur courant */
+  .bouton {
+    /* Propriétés du bouton */
+    &.rechercher {
+      /* Propriétés du bouton de recherche */
+      &:hover {
+        /* Propriétés du bouton de recherche survolé */
+      }
+    }
+  }
+
+  /* Référencer le sélecteur parent
+     Code en sortie: .ie7 .element { ... } */
+  .element {
+    .ie7 & {
+      margin-left: 5px;
+    }
+  }
+  ```
+* Les commentaires
+  ```scss
+  /* Commentaire apparent dans la source après compilation */
+  // Commentaire Sass, ne sera pas compilé 
+  ```
+* Les variables
+  ```scss
+  $links: #08F;
+  a { color: $links }
+  ``
+* Les mixins
+  * Définir et appeler un mixin
+    ```scss
+    @mixin mon-mixin {
+      color: red;
+    }
+    .ma-regle {
+      @include mon-mixin;
+    }
+    ```
+  * Mixin avec arguments
+    ```scss
+    @mixin box-shadow($arguments: none) {
+      -moz-box-shadow: $arguments; // Firefox
+      -webkit-box-shadow: $arguments; // WebKit
+      box-shadow: $arguments; // Standard
+    }
+    .button {
+      @include box-shadow(1px 1px 3px red);
+    }
+    ```
+  * Attention aux volumes de code css générés!
+* Etendre une class: @extend
+  ```scss
+  .rounded {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -border-radius: 5px;
+  }
+
+  .button { @extend .rounded; }
+  input[type="text"] { @extend .rounded; }
+
+  /* CSS compilée: les propriétés n'apparaissent plus qu'une seule fois dans le code. */
+  .rounded, .button, input[type="text"] {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -border-radius: 5px;
+  }
+  ```
+* Import de partial (_partial.scss) avec la directive `@import 'partial'`
+* Utilisation du module de couleurs: `rgba, transparentize, opacify, saturate, lighten, darken`
+
 
 + [Documentation SASS](http://www.kaelig.fr/bettersassdocs/)
 
 <a name="compass"/>
 ## Compass
 
-+ reset
-+ Helper images, urls ...
-+ CSS3 sans préfixes
-+ Data URI
-+ Dimensions images
-+ Sprites
-+ effets CSS3
+Les avantages à utiliser compass:
+* Reset embarqué
+* Helper images, urls ...
+* CSS3 sans préfixes
+* Data URI
+* Génération de sprites
+* Effets CSS3 plus facile
 
 <a name="optimisation"/>
-## Optimisation du SCSS
+## Optimisation du CSS avec SASS
 
-+ Utiliser des variables
-+ Définir des jeux de polices (stack-fonts)
-+ Créer des mixins
-+ Etendre des classes (@extend)
-+ Mieux, une combinaison de mixin avec @extend
-+ Gestion des navigateurs particuliers (ie p242)
-+ Compresser le css (Least)
+* Utiliser des variables
+* Définir des jeux de polices (stack-fonts)
+* Créer des mixins
+* Etendre des classes (@extend)
+* Mieux, une combinaison de mixin avec @extend
+* Gestion des navigateurs particuliers avec les sélecteurs parents (ie)
+* Compresser le css (avec Least par exemple)
 
 
 <a name="methods"/>
@@ -335,10 +383,9 @@ L'apparence est décrit par la classe et non par le tag.
       - Une Structure incompatible avec le SEO
       - Trop de teintes ou de typographies différentes.
   * Le dev (qu'est ce que je peux modifier sans risques ?)
-
-* Code documenté (commentaire, style guide ...)
-* Commit intelligible (Git)
-* Code inspiré de bonnes pratiques (pattern)
+* Documenter son code(commentaire, style guide ...)
+* Faire des commits intelligibles (Git)
+* S'inspirer des bonnes pratiques (pattern)
 * Créer des objets simple, facile à combiner / comprendre.
 * Favoriser le code simple et compréhensible
 
@@ -355,29 +402,29 @@ L'apparence est décrit par la classe et non par le tag.
 * Ne pas versionner son code
 * Ne pas faire de veille.
 * Rechercher la perfection
-+ Repousser le nettoyage de son code
-+ Utiliser des styles inline et des !important
-+ Sur spécifier les propriétés
-+ Multiplier les propriétés (couleurs, tailles, margin 0, padding 0)
+* Repousser le nettoyage de son code
+* Utiliser des styles inline et des !important
+* Sur spécifier les propriétés
+* Multiplier les propriétés (couleurs, tailles, margin 0, padding 0)
 
 <a name="new_project"/>
 ## Bien débuter un projet
 
-+ Etudier le design (cahier des charges, maquettes ...)
-+ Déduire des motifs récurrents (boîtes, menus, éléments dynamiques, boutons ...)
-+ Définir une base typographique (p215)
-+ Coder la structure générale (Header, menu, colonnage, footer)
-+ Coder les modules (p219)
-+ Coder les exceptions (par pages): ex 1 page = 1 class (utilisation du body)
+* Etudier le design (cahier des charges, maquettes ...)
+* Déduire des motifs récurrents (boîtes, menus, éléments dynamiques, boutons ...)
+* Définir une base typographique
+* Coder la structure générale (Header, menu, colonnage, footer)
+* Coder les modules
+* Coder les exceptions (par pages): ex 1 page = 1 class (utilisation du body)
 
 <a name="resolve"/>
 ## Résoudre un problème
 
-+ Valider le code
-+ Rechercher une solution dans les moteurs
-+ Isoler le problème dans un environnement contrôlé (reduced test)
-+ Demander de l'aide (JS Fiddle, forum Alsacréation, Stack overflow, doctype, dabblet ...)
-+ Communiquer la résolution du problème (blog, twitter)
+* Valider le code
+* Rechercher une solution dans les moteurs
+* Isoler le problème dans un environnement contrôlé (reduced test)
+* Demander de l'aide (JS Fiddle, forum Alsacréation, Stack overflow, doctype, dabblet ...)
+* Communiquer la résolution du problème (blog, twitter)
 
 
 <a name="tools_learn"/>
@@ -387,7 +434,6 @@ L'apparence est décrit par la classe et non par le tag.
 ## Veille technologique
 
 Il ne s'agit pas d'une activité pour se tenir au courant, mais d'une activité intrinsèque à notre métier, inscrite dans nos missions.
-
 Cela comporte de nombreux avantanges:
 
 * Anticiper les avancées technologiques
@@ -398,24 +444,28 @@ Cela comporte de nombreux avantanges:
 * Diffuser l'information à l'équipe
 
 Mise en place:
-+ [Organiser sa veille](http://fr.slideshare.net/mcfaure/veille-technologique-mcf)
+  * [Organiser sa veille](http://fr.slideshare.net/mcfaure/veille-technologique-mcf)
 
 <a name="docs"/>
 ## Références & docs
 
+### Docs
 * [Google best practices & tools](https://developers.google.com/speed/docs/best-practices/rendering?hl=fr-FR)
 * [Documentation SASS](http://www.kaelig.fr/bettersassdocs/)
+* [Raccourcis CSS](http://www.dustindiaz.com/css-shorthand/)
+
+### Références
 * Simple as Milk
 * Clearleft.com
-+ Smashing magazine
-+ A list apart
-+ Alsacréation
-+ Pompage.net
-+ Openweb
-+ wdfriday.com
-+ 24ways
-+ Css4design
-+ Blogs & twitters
+* Smashing magazine
+* A list apart
+* Alsacréation
+* Pompage.net
+* Openweb
+* wdfriday.com
+* 24ways
+* Css4design
+* Blogs & twitters
 
 <a name="tools"/>
 ## Outils
@@ -428,4 +478,3 @@ Mise en place:
 * [W3C Checklink: validateur de liens](http://validator.w3.org/checklink/)
 * [Colour Contrast Check: analyseur de contrastes](http://snook.ca/technical/colour_contrast/colour.html)
 * [GTmetric: analyse des performances](http://gtmetrix.com/)
-
