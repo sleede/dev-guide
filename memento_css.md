@@ -70,24 +70,24 @@ C'est avant tout une compilation d'outils et de pratiques que nous utilisons tou
 ## Un `<head> à toute épreuve
 * Ajouter un Doctype HTML5 `<!DOCTYPE html>`.
 * Utiliser l'élément HTML pour cibler IE:
-    ```html
-    <!--[if lt IE 7]>      <html class="ie6"> <![endif]-->
-    <!--[if IE 7]>         <html class="ie7"> <![endif]-->
-    <!--[if IE 8]>         <html class="ie8"> <![endif]-->
-    <!--[if IE 9]>         <html class="ie9"> <![endif]-->
-    <!--[if gt IE 9]><!--> <html>         <!--<![endif]-->
-    ```
+  ```html
+  <!--[if lt IE 7]>      <html class="ie6"> <![endif]-->
+  <!--[if IE 7]>         <html class="ie7"> <![endif]-->
+  <!--[if IE 8]>         <html class="ie8"> <![endif]-->
+  <!--[if IE 9]>         <html class="ie9"> <![endif]-->
+  <!--[if gt IE 9]><!--> <html>         <!--<![endif]-->
+  ```
 * Utiliser le script Modernizr.js pour détecter les capacités du navigateur.
-    ```html
-    <html lang="fr" class="js no-touch postmessage history multiplebgs no-boxshadow
-    opacity cssanimations csscolumns cssgradients csstransforms csstransitions
-    fontface localstorage sessionsstorage svg inlinesvg blobbuilder bloburls download
-    formdata">
-    ```
-    ```css
-    .box { box-shadow: #999 0 0 5px; }
-    .no-boxshadow .box { border: 1px solid #ddd; }
-    ```
+  ```html
+  <html lang="fr" class="js no-touch postmessage history multiplebgs no-boxshadow
+  opacity cssanimations csscolumns cssgradients csstransforms csstransitions
+  fontface localstorage sessionsstorage svg inlinesvg blobbuilder bloburls download
+  formdata">
+  ```
+  ```css
+  .box { box-shadow: #999 0 0 5px; }
+  .no-boxshadow .box { border: 1px solid #ddd; }
+  ```
 * Déclencher le mode compatibilité le plus élevé d'Internet Explorer
   ```html
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
