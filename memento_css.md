@@ -269,7 +269,7 @@ L'apparence est décrit par la classe et non par le tag.
   * Exemple de code mauvais généré: `body#homepage #navigation #home-link { ... }`
   * Règle de l'inception: 4 niveaux max d'imbrication.
 * Référencer le sélecteur courant ou parent avec &
-  ```css
+  ```scss
   /* Référencer le sélecteur courant */
   .bouton {
     /* Propriétés du bouton */
@@ -298,7 +298,7 @@ L'apparence est décrit par la classe et non par le tag.
   ```scss
   $links: #08F;
   a { color: $links }
-  ``
+  ```
 * Les mixins
   * Définir et appeler un mixin
     ```scss
