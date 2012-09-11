@@ -7,7 +7,7 @@ C'est avant tout une compilation d'outils et de pratiques que nous utilisons tou
 ## Sommaire
 * [Bonnes pratiques: un code lisible et maintenable](#good_practice)
     * [Adopter une convention d'écriture](#convention)
-    * [Un `<head> à toute épreuve](#head)
+    * [Un head à toute épreuve](#head)
     * [Stratégies de développement](#strategies)
     * [Les frameworks CSS](#frameworks)
       * [En particulier: OOCSS](#oocss)
@@ -67,7 +67,7 @@ C'est avant tout une compilation d'outils et de pratiques que nous utilisons tou
   * [The Open Graph protocol](http://ogp.me/)
 
 <a name="head"/>
-## Un `<head> à toute épreuve
+## Un head à toute épreuve
 * Ajouter un Doctype HTML5 `<!DOCTYPE html>`.
 * Utiliser l'élément HTML pour cibler IE:
   ```html
@@ -83,6 +83,7 @@ C'est avant tout une compilation d'outils et de pratiques que nous utilisons tou
   opacity cssanimations csscolumns cssgradients csstransforms csstransitions
   fontface localstorage sessionsstorage svg inlinesvg blobbuilder bloburls download
   formdata">
+  ```
   ```css
   .box { box-shadow: #999 0 0 5px; }
   .no-boxshadow .box { border: 1px solid #ddd; }
@@ -115,11 +116,9 @@ C'est avant tout une compilation d'outils et de pratiques que nous utilisons tou
     <!-- Meta Charset (à placer avant title pour des raisons de sécurité) -->
     <meta charset="utf-8" />
     <title>Titre de la page</title>
-
-    <!-- Un seul fichier css minifiée et sans @import dedans !-->
+    <!-- Un seul fichier css minifiée et sans @import dedans -->
     <link href="styles.css" media="screen,projection" rel="stylesheet" />
     <link href="print.css" media="print" rel="stylesheet" />
-
     <!-- A charger dans le head, après les CSS, pour éviter un "Flash of unstyled content" -->
     <script src="modernizr.js"></script>
   </head>
