@@ -68,8 +68,9 @@ C'est avant tout une compilation d'outils et de pratiques que nous utilisons tou
 
 <a name="head"/>
 ## Un head à toute épreuve
-* Ajouter un Doctype HTML5 `<!DOCTYPE html>`.
+* Ajouter un Doctype HTML5 `<!DOCTYPE html>`
 * Utiliser l'élément HTML pour cibler IE:
+
   ```html
   <!--[if lt IE 7]>      <html class="ie6"> <![endif]-->
   <!--[if IE 7]>         <html class="ie7"> <![endif]-->
