@@ -5,6 +5,7 @@ L'objectif de ce document est de présenter les outils et les bonnes pratiques d
 C'est avant tout une compilation d'outils et de pratiques que nous utilisons tous les jours. Vous pourrez facilement l'adapter à votre équipe!
 
 ## Sommaire
+
 * [Bonnes pratiques: un code lisible et maintenable](#good_practice)
     * [Adopter une convention d'écriture](#convention)
     * [Un head à toute épreuve](#head)
@@ -35,26 +36,14 @@ C'est avant tout une compilation d'outils et de pratiques que nous utilisons tou
 * Nom de classe en minuscule avec tiret: `name, name-header`.
 * Choisir des noms de classe explicite.
 * Indenter le code avec 2 espaces.
-* Indenter et espacer correctement le code:
-   ```css
-   .element-simple { margin: 0; }
-
-   .element-alpha,
-   .element-simple { margin: 0; }
-
-   #header .element {
-     top 0; right: 0; bottom: 0; left: 0;
-     margin: 1em;
-   }
-   ```
 * Indenter les relations entre les sélecteurs (parent > enfant).
-* Classer les propriétés par type.
-   * Boîte
-   * Bordure
-   * Fond
-   * Texte
-   * Autres
-* Indenter les valeurs CSS3 complexes si besoin.
+* Classer les propriétés par type:
+  + Boîte
+  + Bordure
+  + Fond
+  + Texte
+  + Autres
+* Indenter les valeurs CSS3 complexes si besoin
 * Utiliser les [raccourcis CSS](http://www.dustindiaz.com/css-shorthand/): `border, margin, padding, font, list-style, background`.
 * Commenter le code pour:
    * Détailler un usage particulier
@@ -65,6 +54,17 @@ C'est avant tout une compilation d'outils et de pratiques que nous utilisons tou
 * Utiliser les micro données et les micro formats
   * [Schema.org](http://schema.org/)
   * [The Open Graph protocol](http://ogp.me/)
+* Exemple: indenter et espacer correctement le code:
+   ```css
+   .element-simple { margin: 0; }
+   .element-alpha,
+   .element-simple { margin: 0; }
+
+   #header .element {
+     top: 0; right: 0; bottom: 0; left: 0;
+     margin: 1em;
+   }
+   ```
 
 <a name="head"/>
 ## Un head à toute épreuve
@@ -98,9 +98,11 @@ C'est avant tout une compilation d'outils et de pratiques que nous utilisons tou
   <meta charset="utf-8" />
   ```
 * Utiliser un reset CSS sélectif
-  * [Normalize CSS de Nicolas Gallagher](http://necolas.github.com/normalize.css/)
-  * [Reset CSS d'Eric Meyer](http://meyerweb.com/eric/tools/css/reset/)
-  * [Liste des resets CSS existant](http://www.cssreset.com/)
+  > [Normalize CSS de Nicolas Gallagher](http://necolas.github.com/normalize.css/)
+  >
+  > [Reset CSS d'Eric Meyer](http://meyerweb.com/eric/tools/css/reset/)
+  >
+  > [Liste des resets CSS existant](http://www.cssreset.com/)
 * Bien ranger ses fichiers et fragmenter le code > 500 lignes
 (reset, typo, form, grid, layout, global, application, pages, print, ie...)
 * Ajouter une css pour le média Print.
